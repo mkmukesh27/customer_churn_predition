@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Churn Prediction</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Prediction</h1><br>
+            <h4><b>{{output1}}</b></h4><br>
+            <h4><b>{{output2}}</b></h4><br><br>
+            
+        </div>
+        <a class="btn btn-primary btn-lg mr-2" href="/" role="button">Back</a><br><br>
+    
+        <form action="/prediction" method="POST">
+            <div class="row">
+                <div class="col">
+                  <input type="text" id="SeniorCitizen" name="SeniorCitizen" class="form-control" placeholder="SeniorCitizen" aria-label="SeniorCitizen">
+                </div>
+                <div class="col">
+                  <input type="text" id="MonthlyCharges" name="MonthlyCharges" class="form-control" placeholder="MonthlyCharges" aria-label="MonthlyCharges">
+                </div>
+            </div> <br>
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="TotalCharges" name="TotalCharges" class="form-control" placeholder="TotalCharges" aria-label="TotalCharges">
+                  </div>
+                <div class="col">
+                    <select class="form-select" id="gender" name="gender" aria-label="Default select example">
+                        <option selected>--Select Gender--</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="Partner" name="Partner" aria-label="Default select example">
+                        <option selected>--Partner--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="Dependents" name="Dependents" aria-label="Default select example">
+                        <option selected>--Dependents--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="PhoneService" name="PhoneService" aria-label="Default select example">
+                        <option selected>--PhoneService--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="MultipleLines" name="MultipleLines" aria-label="Default select example">
+                        <option selected>--MultipleLines--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No phone service">No phone service</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="InternetService" name="InternetService" aria-label="Default select example">
+                        <option selected>--InternetService--</option>
+                        <option value="DSL">DSL</option>
+                        <option value="Fiber optic">Fiber optic</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="OnlineSecurity" name="OnlineSecurity" aria-label="Default select example">
+                        <option selected>--OnlineSecurity--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="OnlineBackup" name="OnlineBackup" aria-label="Default select example">
+                        <option selected>--OnlineBackup--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="DeviceProtection" name="DeviceProtection" aria-label="Default select example">
+                        <option selected>--DeviceProtection--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="TechSupport" name="TechSupport" aria-label="Default select example">
+                        <option selected>--TechSupport--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="StreamingTV" name="StreamingTV" aria-label="Default select example">
+                        <option selected>--StreamingTV--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="StreamingMovies" name="StreamingMovies" aria-label="Default select example">
+                        <option selected>--StreamingMovies--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="Contract" name="Contract" aria-label="Default select example">
+                        <option selected>--Contract--</option>
+                        <option value="Month-to-month">Month-to-month</option>
+                        <option value="One year">One year</option>
+                        <option value="Two year">Two year</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" id="PaperlessBilling" name="PaperlessBilling" aria-label="Default select example">
+                        <option selected>--PaperlessBilling--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" id="PaymentMethod" name="PaymentMethod" aria-label="Default select example">
+                        <option selected>--PaymentMethod--</option>
+                        <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                        <option value="Credit card (automatic)">Credit card (automatic)</option>
+                        <option value="Electronic check">Electronic check</option>
+                        <option value="Mailed check">Mailed check</option>
+                      </select>
+                </div>
+            </div><br> 
+            <div class="row">
+              <div class="col">
+                <select class="form-select" id="tenure_group" name="tenure_group" aria-label="Default select example">
+                    <option selected>--tenure_group--</option>
+                    <option value="tenure_group_1 - 12">1</option>
+                    <option value="tenure_group_13 - 24">2</option>
+                    <option value="tenure_group_25 - 36k">3</option>
+                    <option value="tenure_group_37 - 48">4</option>
+                    <option value="tenure_group_49 - 60">5</option>
+                    <option value="tenure_group_61 - 72">More Than 5 Year</option>
+                  </select>
+              </div>
+            </div><br>
+            <div class="text-center"> 
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>  
+        </form><br>
+        <h4><b>{{output1}}</b></h4><br>
+        <h4><b>{{output2}}</b></h4><br><br>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
